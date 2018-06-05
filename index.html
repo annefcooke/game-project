@@ -3,14 +3,44 @@
   <head>
     <meta charset="utf-8">
     <title>Game Project</title>
+    <link rel="stylesheet" href="stylesheets/bootstrap.min.css">
     <link rel="stylesheet" href="stylesheets/styles.css">
+    <link href="https://fonts.googleapis.com/css?family=Roboto:100i" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Arima+Madurai:100" rel="stylesheet">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
   </head>
   <body>
 
+    <h1>SIMON SAYS</h1>
 
+    <div class="button-div">
+      <div id ="red" class="button"></div>
+      <div id ="green" class="button"></div>
+      <h2 class="start-button">Start</h2>
+      <div id ="yellow" class="button"></div>
+      <div id ="blue" class="button"></div>
+    </div>
 
+    <div class="instructions">
+      <h2>Instructions</h2>
+      <p>Test your memory and copy Simon!</p><br>
+      <p>There are 15 levels of increasing sequences,<br> and the higher the level, the higher you score.</p><br>
+      <p>See if you can complete all 15 levels!</p>
+    </div>
 
-    <script type="text/javascript" src="js/main.js"></script>
+    <div class="row">
+      <div class="col col-xs-4 col-xx-4">
+        <h2>Level: <span class="level">0</span></h2>
+      </div>
+      <div class="instructions-button col-xs-4 col-xx-4">
+        <h2>How to Play</h2>
+      </div>
+      <div class="col col-xs-4 col-xx-4">
+        <h2>Score: <span class="score">0</span></h2>
+      </div>
+    </div>
+
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script type="text/javascript" src="js/main.js"></script>
   </body>
 </html>
