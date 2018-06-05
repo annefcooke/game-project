@@ -101,7 +101,7 @@ $(document).ready(function(event) {
 
 
   $('.instructions-button').click(function() {
-    if ($('.instructions-button:contains("How ")')){
+    if ($('.instructions-button:contains("How")')){
       $('.button-div').css('display', 'none');
       $('.instructions').css('display','unset').css("margin",'20%');
       $(this).html('<h2>Back to Game</h2>');

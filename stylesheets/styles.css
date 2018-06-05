@@ -118,7 +118,7 @@ h1 {
 
 .instructions h2 {
   font-size: 50px;
-  margin-bottom: 5%;
+  margin-bottom: 4%;
   text-shadow: 0.5px 0.5px 10px white;
 }
 
@@ -127,4 +127,13 @@ h1 {
 		width: 90%;
     padding-top: 90%;
 	}
+  h2 {
+    font-size: 20px;
+  }
+  .instructions {
+    font-size: 20px;
+  }
+  .start-button {
+    font-size: 25px;
+  }
 }
