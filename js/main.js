@@ -9,6 +9,33 @@ $(document).ready(function(event) {
   playerScore: 0,
   strict: false,
   }
+  //setting default speed settings to 'easy'
+  var intervalSpeed = 600;
+  var removeSpeed = 400;
+
+  //on-click events to set difficulty/speeds
+  $('#easy').click(function functionName() {
+    intervalSpeed = 600;
+    removeSpeed = 400;
+    $(this).addClass('selected');
+    $('#medium').removeClass('selected');
+    $('#hard').removeClass('selected');
+  })
+  $('#medium').click(function functionName() {
+    intervalSpeed = 380;
+    removeSpeed = 230;
+    $(this).addClass('selected');
+    $('#easy').removeClass('selected');
+    $('#hard').removeClass('selected');
+  })
+  $('#hard').click(function functionName() {
+    intervalSpeed = 225;
+    removeSpeed = 180;
+    $(this).addClass('selected');
+    $('#easy').removeClass('selected');
+    $('#medium').removeClass('selected');
+  })
+
 
   //start button click event
   $('.start-button').click(function() {
@@ -37,8 +64,7 @@ $(document).ready(function(event) {
       if (i>=game.compArray.length) {
         clearInterval();
       }
-    }, 500
-    )
+    }, intervalSpeed)
     game.playerArray = [];
   }
 
@@ -47,8 +73,8 @@ $(document).ready(function(event) {
     $(index).addClass('chosen');
     setTimeout(function() {
       $(index).removeClass('chosen');
-    }, 300
-  )}
+    }, removeSpeed)
+  }
 
   //click event for the 4 game buttons. Pushes the id to the playerArray. Also adds and removes class of 'chosen'.
   $('.button').click(function() {
@@ -70,10 +96,15 @@ $(document).ready(function(event) {
       }, 2000)
     } else {
       if (game.playerArray.length === game.compArray.length) {
-        game.playerScore += Math.pow(game.compArray.length,2);
+        if ($('#easy').hasClass('selected')) {
+          game.playerScore += game.compArray.length;
+        } else if ($('#medium').hasClass('selected')) {
+          game.playerScore += (game.compArray.length)*2;
+        } else if ($('#hard').hasClass('selected')) {
+          game.playerScore += (game.compArray.length)*3;
+        }
         $('.score').html(game.playerScore);
-
-        if(game.count == 5){
+        if(game.count == 15){
           $('.start-button').html('Complete! You scored the top score of '+game.playerScore+'!');
           setTimeout(function() {
             $('.start-button').html('New Game');
@@ -88,32 +119,22 @@ $(document).ready(function(event) {
     }
   }
 
+  // get the modal, button for modal, and close button:
+  var modal = document.getElementById('myModal');
+  var btn = document.getElementById("instructions");
+  var span = document.getElementsByClassName("close")[0];
 
-  // Get the modal
-var modal = document.getElementById('myModal');
-
-// Get the button that opens the modal
-var btn = document.getElementById("instructions");
-
-// Get the <span> element that closes the modal
-var span = document.getElementsByClassName("close")[0];
-
-// When the user clicks on the button, open the modal
-btn.onclick = function() {
-    modal.style.display = "block";
-}
-
-// When the user clicks on <span> (x), close the modal
-span.onclick = function() {
-    modal.style.display = "none";
-}
-
-// When the user clicks anywhere outside of the modal, close it
-window.onclick = function(event) {
-    if (event.target == modal) {
-        modal.style.display = "none";
-    }
-}
-
+  // on-click events for the modal:
+  btn.onclick = function() {
+      modal.style.display = "block";
+  }
+  span.onclick = function() {
+      modal.style.display = "none";
+  }
+  window.onclick = function(event) {
+      if (event.target == modal) {
+          modal.style.display = "none";
+      }
+  }
 
 })

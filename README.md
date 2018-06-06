@@ -25,16 +25,21 @@ Creating an on-click event to collect the player's input and push it to an array
 Comparing the 2 arrays and if correct, move to the next level, or game won if all levels completed. If incorrect, option to restart the game.
 
 #### *Levels*
-The game starts from a sequence of length 1. Each level thereafter, the computer generates a further random choice and adds it to the end of the array. Continues until a level of 5 currently whilst still developing/testing. This will continue to a level of 15 once live.
+The game starts from a sequence of length 1. Each level thereafter, the computer generates a further random choice and adds it to the end of the array. Continues until a level of 5 currently whilst still developing/testing. This will continue to a level of 15 once live. Could potentially continue this indefinitely and introduce highscores/leaderboards.
+
+#### *Difficulties*
+Added difficulties of easy, medium and hard. The player can choose the difficulty. Increasing the difficulty increases the speed at which the sequence is displayed. It also results in higher scores.
 
 #### *Scoring*
-The scoring works so that after each complete level, the player earns points equivalent to their level number squared. The score is shown at all times and when the game ends, the player's final score is confirmed.
+The scoring works so that after each correct sequence, the player earns points depending on the difficulty and the level as follows:
+* **Easy** - points equivalent to the current level number
+* **Medium** - double points
+* **Hard** - triple points
+
+The score is shown at all times, the final score being confirmed when the game ends.
 
 #### *Instructions*
 Created a modal to display instructions.
 
 #### *Sound Effects*
 Still to add.
-
-#### *Difficulties*
-Planning to add different difficulties in terms of speed. Yet to explore.
