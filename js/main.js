@@ -79,8 +79,6 @@ $(document).ready(function(event) {
             $('.start-button').html('New Game');
           }, 2000)
         } else {
-          // $('.start-button').html('Next Level!');
-          // nextLevel();
           game.count +=1;
           $('.level').html(game.count);
           $('.start-button').html(' ');
@@ -90,29 +88,32 @@ $(document).ready(function(event) {
     }
   }
 
-  // function nextLevel() {
-  //   game.count +=1;
-  //   $('.level').html(game.count);
-  //   $('.start-button').html(' ');
-  //   generateSequence();
-  // }
 
+  // Get the modal
+var modal = document.getElementById('myModal');
 
+// Get the button that opens the modal
+var btn = document.getElementById("instructions");
 
+// Get the <span> element that closes the modal
+var span = document.getElementsByClassName("close")[0];
 
-  $('.instructions-button').click(function() {
-    if ($('.instructions-button:contains("How")')){
-      $('.button-div').css('display', 'none');
-      $('.instructions').css('display','unset').css("margin",'20%');
-      $(this).html('<h2>Back to Game</h2>');
-      $('.col').html(' ');
+// When the user clicks on the button, open the modal
+btn.onclick = function() {
+    modal.style.display = "block";
+}
+
+// When the user clicks on <span> (x), close the modal
+span.onclick = function() {
+    modal.style.display = "none";
+}
+
+// When the user clicks anywhere outside of the modal, close it
+window.onclick = function(event) {
+    if (event.target == modal) {
+        modal.style.display = "none";
     }
-    // else if ($('.instructions-button:contains("Back")')){
-    //   // $('.button-div').css('display', 'block');
-    //   // $('.instructions').css('display','none');
-    //   $(this).html('<h2>How to Play</h2>');
-    // }
-  })
+}
 
 
 })
