@@ -17,21 +17,23 @@
       <p class="buttons selected" id="easy">EASY</p>
       <p class="buttons" id="medium">MEDIUM</p>
       <p class="buttons" id="hard">HARD</p>
+      <p class="buttons" id="reverse">REVERSE</p>
     </div>
 
     <!-- Main game section -->
     <div class="button-div">
-      <div id ="red" class="button"></div>
-      <div id ="green" class="button"></div>
+      <div id ="red" class="red button"></div>
+      <div id ="green" class="green button"></div>
       <p class="start-button buttons">Start</p>
-      <div id ="yellow" class="button"></div>
-      <div id ="blue" class="button"></div>
+      <div id ="yellow" class="yellow button"></div>
+      <div id ="blue" class="blue button"></div>
     </div>
+
 
     <!-- Bottom row -->
     <div class="row">
       <div class="col col-xs-4 col-xx-4">
-        <h2>Level: <span class="level">0</span></h2>
+        <h2>Level: <span class="level">0</span>/15</h2>
       </div>
       <div id ="instructions" class="buttons col-xs-4 col-xx-4">
         <h2>How to Play</h2>
@@ -53,6 +55,11 @@
         <p>See if you can complete all levels!</p>
       </div>
     </div>
+
+    <!-- sound effects -->
+    <audio src="sounds/negative.mp3" type="audio/mpeg" id="negative"></audio>
+    <audio src="sounds/positive.mp3" type="audio/mpeg" id="positive"></audio>
+    <audio src="sounds/win.mp3" type="audio/mpeg" id="win"></audio>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script type="text/javascript" src="js/main.js"></script>

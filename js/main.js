@@ -20,22 +20,36 @@ $(document).ready(function(event) {
     $(this).addClass('selected');
     $('#medium').removeClass('selected');
     $('#hard').removeClass('selected');
+    $('#reverse').removeClass('selected');
+    $('.start-button').html('Start');
   })
   $('#medium').click(function functionName() {
-    intervalSpeed = 380;
-    removeSpeed = 230;
+    intervalSpeed = 280;
+    removeSpeed = 180;
     $(this).addClass('selected');
     $('#easy').removeClass('selected');
     $('#hard').removeClass('selected');
+    $('#reverse').removeClass('selected');
+    $('.start-button').html('Start');
   })
   $('#hard').click(function functionName() {
-    intervalSpeed = 225;
+    intervalSpeed = 280;
     removeSpeed = 180;
     $(this).addClass('selected');
     $('#easy').removeClass('selected');
     $('#medium').removeClass('selected');
+    $('#reverse').removeClass('selected');
+    $('.start-button').html('Start');
   })
-
+  $('#reverse').click(function functionName() {
+    intervalSpeed = 280;
+    removeSpeed = 180;
+    $(this).addClass('selected');
+    $('#easy').removeClass('selected');
+    $('#medium').removeClass('selected');
+    $('#hard').removeClass('selected');
+    $('.start-button').html('Start');
+  })
 
   //start button click event
   $('.start-button').click(function() {
@@ -56,6 +70,9 @@ $(document).ready(function(event) {
   //Computer generates a random choice from the 4 options in the option array. This pushes the choice to the end of the current computer array. Then goes through each item in the array at set intervals until reaching end of the array.
   function generateSequence() {
     game.compArray.push(game.optionsArray[Math.floor(Math.random()*4)]);
+    if ($('#hard').hasClass('selected')) {
+      game.compArray.push(game.optionsArray[Math.floor(Math.random()*4)]);
+    }
     console.log(game.compArray);
     var i = 0;
     setInterval(function() {
@@ -80,16 +97,21 @@ $(document).ready(function(event) {
   $('.button').click(function() {
     var element = "#"+this.id;
     game.playerArray.push(element);
-    playerTurn(this);
+    if ($('#reverse').hasClass('selected')) {
+      compareReverse(this);
+    } else {
+      compareArrays(this);
+    }
     $(this).addClass('chosen');
     setTimeout(function() {
       $('.button').removeClass('chosen');
-    }, 100)
+    }, 150)
   })
 
   //Comparing computer array and player array. If player gets it wrong, it gives player the opportunity to play again from beginning. If play gets it right, either player wins if all levels complete, or move to next level (generates next sequence).
-  function playerTurn(x) {
+  function compareArrays(x) {
   if (game.playerArray[game.playerArray.length - 1] !== game.compArray[game.playerArray.length - 1]) {
+      $('#negative')[0].play();
       $('.start-button').html('Oops! You scored '+game.playerScore+ '.');
       setTimeout(function() {
         $('.start-button').html('Try Again');
@@ -100,20 +122,53 @@ $(document).ready(function(event) {
           game.playerScore += game.compArray.length;
         } else if ($('#medium').hasClass('selected')) {
           game.playerScore += (game.compArray.length)*2;
-        } else if ($('#hard').hasClass('selected')) {
+        } else {
           game.playerScore += (game.compArray.length)*3;
         }
         $('.score').html(game.playerScore);
-        if(game.count == 15){
+        if(game.count == 4){
+          $('#win')[0].play();
           $('.start-button').html('Complete! You scored the top score of '+game.playerScore+'!');
           setTimeout(function() {
             $('.start-button').html('New Game');
           }, 2000)
         } else {
+          $('#positive')[0].play();
           game.count +=1;
           $('.level').html(game.count);
           $('.start-button').html(' ');
-          generateSequence();
+          setTimeout(function() {
+            generateSequence();
+          }, 240)
+        }
+      }
+    }
+  }
+  function compareReverse(x) {
+  if (game.playerArray[game.playerArray.length - 1] !== game.compArray.slice().reverse()[game.playerArray.length - 1]) {
+      $('#negative')[0].play();
+      $('.start-button').html('Oops! You scored '+game.playerScore+ '.');
+      setTimeout(function() {
+        $('.start-button').html('Try Again');
+      }, 2000)
+    } else {
+      if (game.playerArray.length === game.compArray.length) {
+        game.playerScore += (game.compArray.length)*3;
+        $('.score').html(game.playerScore);
+        if(game.count == 4){
+          $('.start-button').html('Complete! You scored the top score of '+game.playerScore+'!');
+          $('#win')[0].play();
+          setTimeout(function() {
+            $('.start-button').html('New Game');
+          }, 2000)
+        } else {
+          $('#positive')[0].play();
+          game.count +=1;
+          $('.level').html(game.count);
+          $('.start-button').html(' ');
+          setTimeout(function() {
+            generateSequence();
+          }, 200)
         }
       }
     }

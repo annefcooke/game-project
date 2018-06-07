@@ -176,6 +176,9 @@ h1 {
   .start-button {
     font-size: 25px;
   }
+  .selected {
+    font-size: 25px;
+  }
 }
 
 @media screen and (max-width:910px) {
@@ -186,14 +189,10 @@ h1 {
     margin: 0 auto;
     padding:0;
     text-align: center;
-
   }
   .difficulties .buttons {
     display: inline-block;
     margin: 2%;
-  }
-  .selected {
-    font-size: 25px;
   }
   .button-div {
     margin-top: 0;
