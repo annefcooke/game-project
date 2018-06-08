@@ -7,19 +7,24 @@
 * Click 'Clone or Download' and then 'Download Zip'.
 * Double click the file index.html to open in your browser.
 
-### Minimum objectives of the task:
+### Minimum Objectives of the Task:
 * Build a browser based game made using HMTL, CSS and javascript.
 * Include an instruction section explaining how to play the game.
 * Ether display a message when the user has won or display the users score after the game has finished.
 * Be styled to perfection.
 * Be hosted online.
 
-## Progress:
+### How I Worked:
+1. Set out the main tasks in a 'to-do, doing and done' list to keep track of progress.
+2. Created the game in 2 stretches.
+3. In stretch 1 I completed an MVP - a functioning game in the most simple mode with basic styling.
+4. In stretch 2 I added extra game modes, a high score function, sound effects and an instructions modal. Also finalised styling and scaling for mobile use.
 
-### Main layout and basic styling:
+### How the Game Works:
+
+#### *Main layout and styling*
 Displayed in a single page, with a modal for instructions. Also included media queries to scale to different screen sizes.
 
-### Functions:
 #### *Generating Computer Move*
 Generating a random choice from the 4 options, and pushing it to an array. Displaying the array using intervals to add classes to the buttons.
 

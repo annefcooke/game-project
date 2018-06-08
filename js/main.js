@@ -103,47 +103,25 @@ $(document).ready(function(event) {
     }, 150)
   })
 
-  //Comparing computer array and player array. If player gets it wrong, calls 'lose' function. If correct, adds score and calls 'correct' function
+  //Comparing computer array and player array and calls relevant function
   function compareArrays(x) {
-  if (game.playerArray[game.playerArray.length - 1] !== game.compArray[game.playerArray.length - 1]) {
+    if (game.playerArray[game.playerArray.length - 1] !== game.compArray[game.playerArray.length - 1]) {
       lose();
     } else {
-      if (game.playerArray.length === game.compArray.length) {
-        if ($('#easy').hasClass('selected')) {
-          game.playerScore += game.compArray.length;
-        } else if ($('#difficult').hasClass('selected')) {
-          game.playerScore += (game.compArray.length)*2;
-        } else {
-          game.playerScore += (game.compArray.length)*3;
-        }
-        $('.score').html(game.playerScore);
-        if (game.playerScore > game.highScore) {
-        game.highScore = game.playerScore;
-        }
-        $('.highscore').html(game.highScore);
-        correct();
-      }
+      correct();
     }
   }
 
   //comparing arrays - same as above but for reverse mode.
   function compareReverse(x) {
-  if (game.playerArray[game.playerArray.length - 1] !== game.compArray.slice().reverse()[game.playerArray.length - 1]) {
+    if (game.playerArray[game.playerArray.length - 1] !== game.compArray.slice().reverse()[game.playerArray.length - 1]) {
       lose();
     } else {
-      if (game.playerArray.length === game.compArray.length) {
-        game.playerScore += (game.compArray.length)*3;
-        $('.score').html(game.playerScore);
-        if (game.playerScore > game.highScore) {
-        game.highScore = game.playerScore;
-        }
-        $('.highscore').html(game.highScore);
-        correct ();
-      }
+      correct ();
     }
   }
 
-  //
+  //displays score and option to restarts
   function lose() {
     $('#negative')[0].play();
     $('.start-button').html('Oops! You scored '+game.playerScore+ '.');
@@ -152,21 +130,36 @@ $(document).ready(function(event) {
     }, 2000)
   }
 
+  //sets and displays score, highscore, and moves to next level, or if all levels compete player wins.
   function correct() {
-    if(game.count == 15){
-      $('#win')[0].play();
-      $('.start-button').html('Complete! You scored the top score of '+game.playerScore+'!');
-      setTimeout(function() {
-        $('.start-button').html('New Game');
-      }, 2000)
-    } else {
-      $('#positive')[0].play();
-      game.count +=1;
-      $('.level').html(game.count);
-      $('.start-button').html(' ');
-      setTimeout(function() {
-        generateSequence();
-      }, 240)
+    if (game.playerArray.length === game.compArray.length) {
+      if ($('#easy').hasClass('selected')) {
+        game.playerScore += game.compArray.length;
+      } else if ($('#difficult').hasClass('selected')) {
+        game.playerScore += (game.compArray.length)*2;
+      } else {
+        game.playerScore += (game.compArray.length)*3;
+      }
+      $('.score').html(game.playerScore);
+      if (game.playerScore > game.highScore) {
+      game.highScore = game.playerScore;
+      }
+      $('.highscore').html(game.highScore);
+      if(game.count == 15){
+        $('#win')[0].play();
+        $('.start-button').html('Complete! You scored the top score of '+game.playerScore+'!');
+        setTimeout(function() {
+          $('.start-button').html('New Game');
+        }, 2000)
+      } else {
+        $('#positive')[0].play();
+        game.count +=1;
+        $('.level').html(game.count);
+        $('.start-button').html(' ');
+        setTimeout(function() {
+          generateSequence();
+        }, 240)
+      }
     }
   }
 
@@ -187,5 +180,5 @@ $(document).ready(function(event) {
         modal.style.display = "none";
     }
   }
-  
+
 });
