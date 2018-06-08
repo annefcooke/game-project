@@ -7,6 +7,7 @@ $(document).ready(function(event) {
   compArray: [],
   playerArray: [],
   playerScore: 0,
+  highScore: 0,
   strict: false,
   }
   //setting default speed settings to 'easy'
@@ -18,26 +19,26 @@ $(document).ready(function(event) {
     intervalSpeed = 600;
     removeSpeed = 400;
     $(this).addClass('selected');
-    $('#medium').removeClass('selected');
-    $('#hard').removeClass('selected');
+    $('#difficult').removeClass('selected');
+    $('#double').removeClass('selected');
     $('#reverse').removeClass('selected');
     $('.start-button').html('Start');
   })
-  $('#medium').click(function functionName() {
+  $('#difficult').click(function functionName() {
+    intervalSpeed = 250;
+    removeSpeed = 150;
+    $(this).addClass('selected');
+    $('#easy').removeClass('selected');
+    $('#double').removeClass('selected');
+    $('#reverse').removeClass('selected');
+    $('.start-button').html('Start');
+  })
+  $('#double').click(function functionName() {
     intervalSpeed = 280;
     removeSpeed = 180;
     $(this).addClass('selected');
     $('#easy').removeClass('selected');
-    $('#hard').removeClass('selected');
-    $('#reverse').removeClass('selected');
-    $('.start-button').html('Start');
-  })
-  $('#hard').click(function functionName() {
-    intervalSpeed = 280;
-    removeSpeed = 180;
-    $(this).addClass('selected');
-    $('#easy').removeClass('selected');
-    $('#medium').removeClass('selected');
+    $('#difficult').removeClass('selected');
     $('#reverse').removeClass('selected');
     $('.start-button').html('Start');
   })
@@ -46,8 +47,8 @@ $(document).ready(function(event) {
     removeSpeed = 180;
     $(this).addClass('selected');
     $('#easy').removeClass('selected');
-    $('#medium').removeClass('selected');
-    $('#hard').removeClass('selected');
+    $('#difficult').removeClass('selected');
+    $('#double').removeClass('selected');
     $('.start-button').html('Start');
   })
 
@@ -70,7 +71,7 @@ $(document).ready(function(event) {
   //Computer generates a random choice from the 4 options in the option array. This pushes the choice to the end of the current computer array. Then goes through each item in the array at set intervals until reaching end of the array.
   function generateSequence() {
     game.compArray.push(game.optionsArray[Math.floor(Math.random()*4)]);
-    if ($('#hard').hasClass('selected')) {
+    if ($('#double').hasClass('selected')) {
       game.compArray.push(game.optionsArray[Math.floor(Math.random()*4)]);
     }
     console.log(game.compArray);
@@ -126,7 +127,12 @@ $(document).ready(function(event) {
           game.playerScore += (game.compArray.length)*3;
         }
         $('.score').html(game.playerScore);
-        if(game.count == 4){
+        if (game.playerScore > game.highScore) {
+        game.highScore = game.playerScore;
+        }
+        console.log(game.highScore);
+        $('.highscore').html(game.highScore);
+        if(game.count == 15){
           $('#win')[0].play();
           $('.start-button').html('Complete! You scored the top score of '+game.playerScore+'!');
           setTimeout(function() {
@@ -155,7 +161,12 @@ $(document).ready(function(event) {
       if (game.playerArray.length === game.compArray.length) {
         game.playerScore += (game.compArray.length)*3;
         $('.score').html(game.playerScore);
-        if(game.count == 4){
+        if (game.playerScore > game.highScore) {
+        game.highScore = game.playerScore;
+        }
+        console.log(game.highScore);
+        $('.highscore').html(game.highScore);
+        if(game.count == 15){
           $('.start-button').html('Complete! You scored the top score of '+game.playerScore+'!');
           $('#win')[0].play();
           setTimeout(function() {
