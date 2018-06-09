@@ -2,8 +2,11 @@
 
 ## Project - Browser based game made using HMTL, CSS and javascript
 
-### How to Use:
-* Go to https://github.com/annefcooke/game-project.
+### Play the game:
+Go to https://annefcooke.github.io/simon-says-project/
+
+### How to Download:
+* Go to https://github.com/annefcooke/simon-says-project.
 * Click 'Clone or Download' and then 'Download Zip'.
 * Double click the file index.html to open in your browser.
 
