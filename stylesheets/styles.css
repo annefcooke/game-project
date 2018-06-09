@@ -1,5 +1,4 @@
 body {
-  /* font-family: 'Roboto', sans-serif; */
   font-family: 'Arima Madurai', cursive;
   background-color: black;
   color:rgb(197, 246, 238);
@@ -74,7 +73,6 @@ h1 {
   left:0;
   border-color: red;
   background-color: red;
-
 }
 
 #red:hover {

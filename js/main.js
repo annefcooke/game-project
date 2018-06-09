@@ -38,10 +38,7 @@ $(document).ready(function(event) {
 
   //function for changing class of mode buttons
   function selectedButton(difficultySelector){
-    $('#easy').removeClass('selected');
-    $('#difficult').removeClass('selected');
-    $('#double').removeClass('selected');
-    $('#reverse').removeClass('selected');
+    $('.buttons').removeClass('selected');
     $('.start-button').html('Start');
     $(difficultySelector).addClass('selected');
   }
@@ -88,7 +85,7 @@ $(document).ready(function(event) {
     }, removeSpeed)
   }
 
-  //click event for the 4 game buttons. Pushes the id to the playerArray. Also adds and removes class of 'chosen'.
+  //click event for the 4 game buttons. Pushes the id to the playerArray. Also adds and removes class of 'chosen'. It also calls the functions to check whether the player's last click was correct.
   $('.button').click(function() {
     var element = "#"+this.id;
     game.playerArray.push(element);
